@@ -1,2 +1,2 @@
 ### MolDynamics_gromacs
-Gromacs MD parameters included  # 19 Jan 2023
+Added Gromacs ATMD parameters for EM, EQ, PROD (unbiased) # 19 Jan 2023
