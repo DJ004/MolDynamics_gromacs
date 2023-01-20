@@ -7,8 +7,8 @@ nsteps                 = 250000000     ; 250M x 0.002 = 500K ps = 500 ns
 dt                     = 0.002         ; 0.002 ps -> 2fs
 
 ; Output control
-nstxout	               = 0             ; save coordinates every n ps
-nstvout                = 0             ; save velocities every n ps
+nstxout	               = 0             ; 0 value avoids TRR generation
+nstvout                = 0             ; 0 value avoids TRR generation
 nstenergy              = 50000         ; save energies every 50000 steps = 50000 x 0.002 = 100 ps
 nstlog	               = 50000         ; save log file every 50000 steps = 50000 x 0.002 = 100 ps
 nstxout-compressed     = 50000         ; save compressed coordinates every 50000 x 0.002 = 100 ps ; nstxout-compressed replaces nstxtcout
