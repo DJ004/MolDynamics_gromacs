@@ -48,6 +48,6 @@ lincs_iter             = 1                 ; accuracy of LINCS
 lincs_order            = 4                 ; also related to accuracy
 
 ; Velocity generation
-gen_vel	               = no                ; Velocity generation = yes / no
+gen_vel	               = yes               ; 'yes' if using EM.gro/pdb as initial frame; 'no' if using (for ex.) NVT.gro/pdb or EQ_NPT.gro/pdb
 gen_seed               = -1
-continuation           = yes               ; continuation = no if gen_vel = yes
+continuation           = no                ; continuation = no if gen_vel = yes .. & vice versa
