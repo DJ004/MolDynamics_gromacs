@@ -29,13 +29,13 @@ pme_order              = 4             ; cubic interpolation
 ; Temperature coupling is on
 tcoupl                 = V-rescale  
 energygrps             = System                                  ; using only 1 group 'System' for GPU usage
-tc-grps                = S1PP Protein DPPC POPI25 POT CLA TIP3   ; more coupling groups - more accurate
-tau_t                  = 0.1 0.1 0.1 0.1 0.1 0.1 0.1             ; time constant, in ps
-ref_t                  = 310 310 310 310 310 310 310             ; reference temperature, one for each group, in K
+tc-grps                = Protein_Ligand MEMBRANE SOLVENT         ; temp coupling groups explained: www.mdtutorials.com/gmx/complex/06_equil.html
+tau_t                  = 0.1 0.1 0.1                             ; time constant, in ps
+ref_t                  = 313 313 313                             ; reference temperature, one for each group, in K
 
 ; Pressure coupling is on
-pcoupl                 = Parrinello-Rahman ; Parrinello-Rahman for production
-pcoupltype             = semiisotropic     ; uniform scaling of box vectors
+pcoupl                 = Parrinello-Rahman ; use Berendsen for EQ
+pcoupltype             = semiisotropic     ; uniform scaling of box vectors ;use isotropic for non-membrane systems
 tau_p                  = 2.0               ; time constant, in ps
 ref_p                  = 1.0 1.0           ; reference pressure, in bar
 compressibility        = 4.5e-5 4.5e-5     ; isothermal compressibility of water, bar^-1
