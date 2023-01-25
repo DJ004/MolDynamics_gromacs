@@ -1,0 +1,61 @@
+title                    = NPT production with MARTINI FF
+define                   =
+
+; Run parameters
+integrator               = md                       ; leap-frog integrator
+dt                       = 0.02                     ; 20 fs with martini FF
+nsteps                   = 200000000                ; 200M x 0.02 = 4000 ns
+nstcomm                  = 100
+comm-grps                =
+
+; Output control
+nstxout                  = 0                        ; 0 value avoids TRR generation   
+nstvout                  = 0                        ; 0 value avoids TRR generation
+nstenergy                = 25000                    ; save energies every 25000 steps = 25000 x 0.02 = 500 ps
+nstlog                   = 25000                    ; save log file every 25000 steps = 25000 x 0.02 = 500 ps
+nstxout-compressed       = 25000                    ; save compressed coordinates every 25000 x 0.02 = 500 ps
+compressed-x-precision   = 25000
+compressed-x-grps        =
+
+; Neighborsearching
+cutoff-scheme            = Verlet
+nstlist                  = 20
+ns-type                  = grid
+pbc                      = xyz
+
+; Electrostatics and VDW
+rvdw                     = 1.1                      ; 1.1 (for use with Verlet-pairlist)
+rcoulomb                 = 1.1
+coulombtype              = Cut-off                  ; PME (especially with polarizable water)
+coulomb-modifier         = Potential-shift          ; Do not use Potential-shift with coulombtype = Reaction-Field
+epsilon-r                = 15                       ; 2.5 (with polarizable water)
+vdwtype                  = Cut-off                  ; Shift is deprecated
+vdw-modifier             = Potential-shift
+;rvdw-switch             = 0.0                      ; 0 is default - any distance below 1.1nm, down to zero nm, is an interaction
+;rcoulomb-switch         = 0.0                      ; 0 is default
+
+; Temperature coupling
+tcoupl                   = V-rescale                
+energygrps               = System                   ; using only 1 group 'System' for GPU usage
+tc-grps                  = Protein MEMBRANE SOLVENT
+tau-t                    = 1.0 1.0 1.0 
+ref-t                    = 313 313 313
+
+; Pressure coupling
+pcoupl                   = parrinello-rahman        ; parrinello-rahman for production
+pcoupltype               = semiisotropic            ; isotropic for non-membrane systems
+tau-p                    = 12.0                     ; time constant, in ps ; parrinello-rahman is more stable with larger tau-p, DdJ, 20130422
+ref-p                    = 1.0  1.0 				; reference pressure, in bar
+compressibility          = 3e-4  3e-4				; isothermal compressibility of water, bar^-1 ; varies from all-atom MD
+
+; Bond parameters
+constraints              = none
+constraint-algorithm     = Lincs
+lincs-order              = 4
+lincs-warnangle          = 30
+
+; Velocity generation
+gen-vel                  = no                       ; 'yes' if using EM.gro/pdb as initial frame; 'no' if using (for ex.) NVT.gro/pdb
+gen-temp                 = 313                      ; only applies when gen-vel=yes
+gen-seed                 = -1
+continuation             = yes                      ; continuation = no if gen_vel = yes .. & vice versa
