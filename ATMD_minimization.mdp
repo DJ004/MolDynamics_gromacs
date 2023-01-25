@@ -1,3 +1,5 @@
+title                    = Energy Minimization
+
 define                   = ;-DFLEXIBLE
 integrator               = steep
 nsteps                   = 2000     
