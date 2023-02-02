@@ -47,6 +47,7 @@ pcoupltype               = semiisotropic            ; isotropic for non-membrane
 tau-p                    = 12.0                     ; time constant, in ps ; parrinello-rahman is more stable with larger tau-p, DdJ, 20130422
 ref-p                    = 1.0  1.0                 ; reference pressure, in bar
 compressibility          = 3e-4  3e-4               ; isothermal compressibility of water, bar^-1 ; varies from all-atom MD
+refcoord-scaling         = com
 
 ; Bond parameters
 constraints              = none
