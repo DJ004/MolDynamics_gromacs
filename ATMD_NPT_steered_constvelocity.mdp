@@ -34,7 +34,7 @@ tau_t                  = 0.1 0.1 0.1 0.1 0.1 0.1 0.1             ; time constant
 ref_t                  = 340 340 340 340 340 340 340             ; reference temperature, one for each group, in K
 
 ; Pressure coupling is on
-pcoupl                 = berendsen                               ; Parrinello-Rahman for production
+pcoupl                 = Parrinello-Rahman                       ; berendsen for EQ, Parrinello-Rahman for production
 pcoupltype             = semiisotropic                           ; uniform scaling of box vectors
 tau_p                  = 2.0                                     ; time constant, in ps
 ref_p                  = 1.0 1.0                                 ; reference pressure, in bar
