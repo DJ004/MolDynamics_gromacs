@@ -1,6 +1,6 @@
 title                  = NPT equilibration
 define                 = 
-
+; test
 ; Run parameters
 integrator             = md            ; leap-frog integrator
 nsteps                 = 2000000       ; 2000000 x 0.002 = 4000ps = 4ns
