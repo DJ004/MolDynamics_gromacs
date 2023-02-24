@@ -113,7 +113,7 @@ else:
   elif lipid_type == "DOPG": bond_names = phosphatidylglycerol_bond_names + "GL1-C1A C1A-D2A D2A-C3A C3A-C4A GL2-C1B C1B-D2B D2B-C3B C3B-C4B\n"
   elif lipid_type == "DLPG": bond_names = phosphatidylglycerol_bond_names + "GL1-C1A C1A-C2A C2A-C3A GL2-C1B C1B-C2B C2B-C3B \n"
   # CDL
-  elif lipid_type == "CDL2": bond_names = cardiolipin_bond_names + "GL11-C1A1 C1A1-C2A1 C2A1-D3A1 D3A1-C4A1 C4A1-C5A1 GL21-C1B1 C2B1-D3B1 D3B1-C4B1 C4B1-C5B1 GL12-C1A2 C1A2-C2A2 C2A2-D3A2 D3A2-C4A2 C4A2-C5A2 GL22-C1B2 C1B2-C2B2 C2B2-D3B2 D3B2-C4B2 C2B2-C5B2\n"
+  elif lipid_type == "CDL2": bond_names = cardiolipin_bond_names + "GL11-C1A1 C1A1-C2A1 C2A1-D3A1 D3A1-C4A1 C4A1-C5A1 GL21-C1B1 C1B1-C2B1 C2B1-D3B1 D3B1-C4B1 C4B1-C5B1 GL12-C1A2 C1A2-C2A2 C2A2-D3A2 D3A2-C4A2 C4A2-C5A2 GL22-C1B2 C1B2-C2B2 C2B2-D3B2 D3B2-C4B2 C2B2-C5B2\n"
 
   # output legend
   output_legend = "  Frame" + bond_names 
