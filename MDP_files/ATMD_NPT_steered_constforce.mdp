@@ -7,11 +7,11 @@ nsteps                 = 20000000      ; 20M x 0.002 = 40000 ps = 40 ns
 dt                     = 0.002         ; 0.002 ps -> 2fs
 
 ; Output control
-nstxout	               = 0             ; save coordinates every n ps
-nstvout                = 0             ; save velocities every n ps
-nstenergy              = 50000         ; save energies every n ps
-nstlog	               = 50000         ; update log file every n ps
-nstxout-compressed     = 50000         ; save compressed coordinates every n ps ; nstxout-compressed replaces nstxtcout     		    
+nstxout	               = 0             ; 0 value avoids TRR generation
+nstvout                = 0             ; 0 value avoids TRR generation
+nstenergy              = 50000         ; save energies every 50000 steps = 50000 x 0.002 = 100 ps
+nstlog	               = 50000         ; save log file every 50000 steps = 50000 x 0.002 = 100 ps
+nstxout-compressed     = 50000         ; save compressed coordinates every 50000 x 0.002 = 100 ps ; nstxout-compressed replaces nstxtcout    		    
 
 ; Neighborsearching
 cutoff-scheme  	       = Verlet
@@ -57,7 +57,7 @@ continuation           = no                ; continuation = no if gen_vel = yes
 pull                   = yes               ; 'no' will ignore pull
 pull-ncoords           = 1
 pull-ngroups           = 1                 ; does not include absolute-reference(pull-coord1-origin)
-pull-coord1-origin     = 14.98 14.98 17.5  ; x-center, y-center, uptop
+pull-coord1-origin     = 14.98 14.98 17.5  ; this can be the coord of center of mass of the molecule being pulled
 pull-group1-name       = S1PP_r_88990_&_P
 
 ;pull-group2-name      = 
