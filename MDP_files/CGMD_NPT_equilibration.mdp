@@ -24,14 +24,15 @@ ns-type                  = grid
 pbc                      = xyz
 
 ; Electrostatics and VDW
-rvdw                     = 1.1	                    ; 1.1 (for use with Verlet-pairlist)
+; used as in cgmartini.nl/index.php/force-field-parameters/input-parameters/martini_v2.x_new.mdp
+rvdw                     = 1.1                      ; 1.1 (for use with Verlet-pairlist)
 rcoulomb                 = 1.1
-coulombtype              = Cut-off                  ; PME (especially with polarizable water)
-coulomb-modifier         = Potential-shift          ; Do not use Potential-shift with coulombtype = Reaction-Field
-epsilon-r                = 15	                    ; 2.5 (with polarizable water)
-vdwtype                  = Cut-off                  ; Shift is deprecated 
-vdw-modifier             = Potential-shift
-;rvdw-switch             = 0.0                      ; 0 is default - any distance below 1.1nm, down to zero nm, is an interaction
+coulombtype              = Cut-off                  ; PME especially with polarizable water
+coulomb-modifier         = Potential-shift          ; Do not use coulomb-modifier with coulombtype=Reaction-Field - cgmartini.nl/.../martini_v2.x_new-rf.mdp
+epsilon-r                = 15                       ; 2.5 with polarizable water
+vdwtype                  = Cut-off                  ; Shift is deprecated
+vdw-modifier             = Potential-shift          ; Shifts the vdw potential by a constant such it is 0 at the cut-off distance
+;rvdw-switch             = 0.0                      ; 0 is default
 ;rcoulomb-switch         = 0.0                      ; 0 is default
 
 ; Temperature coupling 
