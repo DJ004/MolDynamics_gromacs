@@ -6,7 +6,7 @@
 #
 # Update: 13 Sep 2023 - taken from changes made by Dhanushka Weerakoon (Khalid Group) on Jan 18 2021
 #
-# Update: 23 Feb 2023 - Abigail Ormrod & Dheeraj Prakaash (Univ of Oxford)
+# Update: 23 Feb 2023 - Abigail Ormrod & Dheeraj Prakaash (Khalid Group, Univ of Oxford)
 #   - Corrected PC & PE lipids according to martini_v2.0_lipids.itp
 #   - Updated script according to gromacs 2020 
 #   - Added POPG, DOPG, DLPG, CDL2
