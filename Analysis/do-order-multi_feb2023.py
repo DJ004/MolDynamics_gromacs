@@ -4,6 +4,8 @@
 # Script to calculate lipid order parameter for coarse-grained Martini2 lipids
 # Original script 'do-order-multi.py' is available here: http://www.cgmartini.nl/index.php/downloads/tools/229-do-order
 #
+# Update: 13 Sep 2023 - taken from changes made by Dhanushka Weerakoon (Khalid Group) on Jan 18 2021
+#
 # Update: 23 Feb 2023 - Abigail Ormrod & Dheeraj Prakaash (Univ of Oxford)
 #   - Corrected PC & PE lipids according to martini_v2.0_lipids.itp
 #   - Updated script according to gromacs 2020 
@@ -96,6 +98,12 @@ else:
   phosphatidylethanolamine_bond_names = " NH3-PO4 PO4-GL1 GL1-GL2 "
   phosphatidylglycerol_bond_names = " GL0-PO4 PO4-GL1 GL1-GL2 "
   cardiolipin_bond_names = " GL0-PO41 GL0-PO42 PO41-GL11 GL11-GL21 PO42-GL12 GL12-GL22 "
+  LPS_chain1_bond_names = " GL2-C1A C1A-C2A C2A-C3A "
+  LPS_chain2_bond_names = " GL1-C1B C1B-C2B C2B-C3B "
+  LPS_chain3_bond_names = " GL3-C1D C1D-C2D C2D-C3D "
+  LPS_chain4_bond_names = " GL4-C1C C1C-C2C C2C-C3C "
+  LPS_chain5_bond_names = " GL6-C1E C1E-C2E "
+  LPS_chain6_bond_names = " GL8-C1F C1F-C2F\n"
   # PCs
   if   lipid_type == "DAPC": bond_names = phosphatidylcholine_bond_names + "GL1-D1A D1A-D2A D2A-D3A D3A-D4A D4A-C5A GL2-D1B D1B-D2B D2B-D3B D3B-D4B D4B-C5B\n"
   elif lipid_type == "DLPC": bond_names = phosphatidylcholine_bond_names + "GL1-C1A C1A-C2A C2A-C3A GL2-C1B C1B-C2B C2B-C3B\n"
@@ -114,7 +122,10 @@ else:
   elif lipid_type == "DLPG": bond_names = phosphatidylglycerol_bond_names + "GL1-C1A C1A-C2A C2A-C3A GL2-C1B C1B-C2B C2B-C3B \n"
   # CDL
   elif lipid_type == "CDL2": bond_names = cardiolipin_bond_names + "GL11-C1A1 C1A1-C2A1 C2A1-D3A1 D3A1-C4A1 C4A1-C5A1 GL21-C1B1 C1B1-C2B1 C2B1-D3B1 D3B1-C4B1 C4B1-C5B1 GL12-C1A2 C1A2-C2A2 C2A2-D3A2 D3A2-C4A2 C4A2-C5A2 GL22-C1B2 C1B2-C2B2 C2B2-D3B2 D3B2-C4B2 C2B2-C5B2\n"
-
+  # LPS
+  elif lipid_type == "RAMP": bond_names = LPS_chain1_bond_names + LPS_chain2_bond_names + LPS_chain3_bond_names + LPS_chain4_bond_names + LPS_chain5_bond_names + LPS_chain6_bond_names
+  elif lipid_type == "REMP": bond_names = LPS_chain1_bond_names + LPS_chain2_bond_names + LPS_chain3_bond_names + LPS_chain4_bond_names + LPS_chain5_bond_names + LPS_chain6_bond_names
+  
   # output legend
   output_legend = "  Frame" + bond_names 
 
