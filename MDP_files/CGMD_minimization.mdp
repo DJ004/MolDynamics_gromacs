@@ -24,10 +24,13 @@ verlet-buffer-tolerance  = 0.005
 constraints              = none
 
 ; Electrostatics and VDW
-rvdw                     = 2.0                       ; default= 1.1 ; use 2.0 if error: '...perturbed non-bonded pair interaction...'
-rcoulomb                 = 2.0                       ; default= 1.1 ; use 2.0 if error: '...perturbed non-bonded pair interaction...'
+; if fatal error: perturbed non-bonded pair interaction beyond pair list cutoff, 
+; refer https://gromacs.bioexcel.eu/t/perturbed-non-bonded-pair-interaction-beyond-the-pair-list-cutoff/4596
+
+rvdw                     = 1.1
+rcoulomb                 = 1.1
 coulombtype              = Reaction-Field
-;;;;;;coulomb-modifier   = Potential-shift-verlet    ; Do not use Potential-shift-verlet with coulombtype = Reaction-Field
+;coulomb-modifier        = Potential-shift-verlet    ; Do not use Potential-shift-verlet with coulombtype = Reaction-Field
 epsilon_r                = 15
 vdw_type                 = Cut-off
 vdw-modifier             = Potential-shift-verlet
