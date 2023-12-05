@@ -70,7 +70,7 @@ pull-coord1-groups     = 0 1               ; 0:reference; 1:pull-group; (0 is pl
 
 pull-coord1-start      = yes 
 pull-coord1-k          = 500               ; this is the force (kJ/mol/nm2)
-pull_coord1_rate       = 0.001             ; 0.001 nm per ps = 1 nm/ns
+;pull_coord1_rate      = 0.001             ; 0.001 nm per ps = 1 nm/ns ; not used when performing constant-force MD
 
-;pull-nstxout          = 1000
-;pull-nstfout          = 1000
+;pull-nstxout          = 1000              ; frequency of writing force of pulled group ;50 steps is default ;0 is never
+;pull-nstfout          = 1000              ; frequency of writing force of pulled group ;50 steps is default ;0 is never
