@@ -29,9 +29,9 @@ pme_order              = 4             ; cubic interpolation
 ; Temperature coupling is on
 tcoupl                 = V-rescale  
 energygrps             = System                                  ; 1 energygrp for GPU usage
-tc-grps                = S1PP Protein DPPC POPI2 POT CLA TIP3    ; 
-tau_t                  = 0.1 0.1 0.1 0.1 0.1 0.1 0.1             ; time constant, in ps
-ref_t                  = 340 340 340 340 340 340 340             ; reference temperature, one for each group, in K
+tc-grps                = LIG Protein LIPIDS SOLVENT              ; 
+tau_t                  = 0.1 0.1 0.1 0.1                         ; time constant, in ps
+ref_t                  = 320 320 320 320                         ; reference temperature, one for each group, in K
 
 ; Pressure coupling is on
 pcoupl                 = Parrinello-Rahman                       ; berendsen for EQ, Parrinello-Rahman for production
@@ -57,20 +57,22 @@ continuation           = no                ; continuation = no if gen_vel = yes
 pull                   = yes               ; 'no' will ignore pull
 pull-ncoords           = 1
 pull-ngroups           = 1                 ; does not include absolute-reference (pull-coord1-origin) when used
-pull-coord1-origin     = 9.5 8.5 9.9       ; coord of (center of mass of) pull-group
-pull-group1-name       = S1PP_&_P
+pull-coord1-origin     = 9.5 8.5 9.9       ; coord of pull-group COM or any atom marking the beginning of the reaction coordinate
+pull-group1-name       = LIG_&_P           ; name of index group
 
 ;pull-group2-name      = 
 ;pull-dim              = Y Y Y             ; only used with pull-geometry=distance
 
-pull-coord1-type       = constraint        ; only used separately in gromacs-v2016
-pull-coord1-geometry   = direction         ; 
-pull-coord1-vec        = 0.5 0.5 0.0       ; Value +1 in Z-dim refers to +Z axis of the vector (pull-group -> reference). Here, reference is above.
-pull-coord1-groups     = 0 1               ; 0:reference; 1:pull-group; (0 is placed 1st when using absolute ref, placed 2nd when using particle group)
+pull-coord1-groups     = 0 1               ; 0:reference; 1:pull-group1; (0 is placed 1st when using absolute ref; when using pull-group2 as ref, it is '1 2')
+pull-coord1-type       = umbrella          ; or constraint for constant velocity
+pull-coord1-geometry   = direction         ; 'direction' while using absolute ref (pull-coord1-origin); 'distance' while using 2 groups defining reaction coord
+pull-coord1-vec        = 0.5 0.5 0.0       ; Example: +1 in Z-dim refers to +Z axis vector.
 
 pull-coord1-start      = yes 
 pull-coord1-k          = 500               ; this is the force (kJ/mol/nm2)
 pull_coord1_rate       = 0.001             ; 0.001 nm per ps = 1 nm/ns
+pull-group1-pbcatom    = 1                 ; atom number for pbc treatment; required in gromacs 2019+
+pull-pbc-ref-prev-step-com = yes           ; required with pull-group1-pbcatom
 
 ;pull-nstxout          = 1000              ; frequency of writing COMs of pull group    ;50 is default ;0 is never
 ;pull-nstfout          = 1000              ; frequency of writing force of pulled group ;50 is default ;0 is never
