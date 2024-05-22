@@ -64,7 +64,7 @@ pull-group1-name       = LIG_&_P           ; name of index group
 ;pull-dim              = Y Y Y             ; only used with pull-geometry=distance
 
 pull-coord1-groups     = 0 1               ; 0:reference; 1:pull-group1; (0 is placed 1st when using absolute ref; when using pull-group2 as ref, it is '1 2')
-pull-coord1-type       = umbrella          ; or constraint for constant velocity
+pull-coord1-type       = constraint        ; constraint for constant velocity
 pull-coord1-geometry   = direction         ; 'direction' while using absolute ref (pull-coord1-origin); 'distance' while using 2 groups defining reaction coord
 pull-coord1-vec        = 0.5 0.5 0.0       ; Example: +1 in Z-dim refers to +Z axis vector.
 
