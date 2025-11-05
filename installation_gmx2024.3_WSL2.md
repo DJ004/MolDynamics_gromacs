@@ -1,6 +1,9 @@
-GPU-enabled GROMACS 2024.3 installation: follow steps 1, 2, 3, 4
-CPU-enabled GROMACS 2024.3 installation: follow steps 1, 3, 4 
+- GPU-enabled GROMACS 2024.3 installation:
+  - follow steps 1, 2, 3, 4
+- CPU-enabled GROMACS 2024.3 installation:
+  - follow steps 1, 3, 4 
 
+.
 #### 1. **Install GCC 9** (compatible with CUDA 11.2) for GPU-enabled GROMACS 2024.3
 ```
 sudo apt-get purge gcc-13 gcc-13-base gcc-13-x86-64-linux-gnu
@@ -100,5 +103,6 @@ source /usr/local/gromacs/bin/GMXRC
 .
 #### Note to self:
 
-- ``My laptop (ASUS ROG Strix G16, 16-Core AMD Ryzen 9 8940HX, GeForce RTX 5070 Ti) comes with CUDA compute capability = 12.0 (-DGMX_CUDA_TARGET_COMPUTE=12.0 during cmake). This level of CUDA's compute capability most likely requires the latest CUDA (v13.x as of Nov 2025) on WSL2. But I can only have CUDA v11.2 installed to ensure compatibility with GCC 9.x to 11.x (latest GCC: v13.x - Nov 2025). An older version of GCC (9.x to 11.x) is required to install GROMACS 2024.3 due to known issues with GCC 12+, as mentioned on installation page (https://manual.gromacs.org/documentation/2024.3/install-guide/index.html). 
+- My laptop (ASUS ROG Strix G16, 16-Core AMD Ryzen 9 8940HX, GeForce RTX 5070 Ti) comes with CUDA compute capability = 12.0 (-DGMX_CUDA_TARGET_COMPUTE=12.0 during cmake). This level of CUDA's compute capability most likely requires the latest CUDA (v13.x as of Nov 2025) on WSL2. But I can only have CUDA v11.2 installed to ensure compatibility with GCC 9.x to 11.x (latest GCC: v13.x - Nov 2025). An older version of GCC (9.x to 11.x) is required to install GROMACS 2024.3 due to known issues with GCC 12+, as mentioned on the installation page (https://manual.gromacs.org/documentation/2024.3/install-guide/index.html). 
+
 - In summary: Gromacs installation recommends GCC 9.x to 11.x (I've installed v9.5) -> compatible with CUDA 11.2 -> CUDA 11.2 incompatible with laptop compute capability. Therefore, use Gromacs 2024.3 with only CPU.
