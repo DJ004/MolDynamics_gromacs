@@ -10,7 +10,7 @@ integrator               = md
 dt                       = 0.02
 nsteps                   = 5000000
 nstcomm                  = 100
-comm-grps		 = 
+comm-grps		             = 
 
 nstxout                  = 0
 nstvout                  = 0
@@ -20,7 +20,7 @@ nstenergy                = 100
 nstxout-compressed       = 500
 compressed-x-precision   = 100
 compressed-x-grps        = 
-;energygrps               = Group1 Group2
+;energygrps              = Group1 Group2
 
 ; NEIGHBOURLIST and MARTINI 
 ; To achieve faster simulations in combination with the Verlet-neighborlist
@@ -54,8 +54,8 @@ verlet-buffer-tolerance  = 0.005
 
 coulombtype              = reaction-field 
 rcoulomb                 = 1.1
-epsilon_r                = 15	; 2.5 (with polarizable water)
-epsilon_rf               = 0
+; epsilon_r              = 15	; 2.5 (with polarizable water)
+epsilon_rf               = 15 ; use with reaction-field electrostatics ; 78 for all-atom
 vdw_type                 = cutoff  
 vdw-modifier             = Potential-shift-verlet
 rvdw                     = 1.1
@@ -92,10 +92,6 @@ ref_p                    = 1.0
 gen_vel                  = no
 gen_temp                 = 310
 gen_seed                 = 473529
-
-; MARTINI and CONSTRAINTS 
-; for ring systems and stiff bonds constraints are defined
-; which are best handled using Lincs. 
 
 constraints              = none 
 constraint_algorithm     = Lincs
