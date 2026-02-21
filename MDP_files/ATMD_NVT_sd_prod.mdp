@@ -1,0 +1,39 @@
+; sd NVT production
+; -----------------
+
+integrator      = sd
+define          =
+dt              = 0.002        ; ps = 2 fs
+nsteps          = 50000000     ; 100 ns = 50000000 * 0.002
+
+; Temp and Pressure coupling
+tc_grps         = System
+ref_t           = 300
+tau_t           = 1.0          ; ps
+pcoupl          = no
+
+; Electrostatics
+coulombtype     = Reaction-Field
+epsilon_rf      = 78.0         ; dielectric constant of liquid water ; use epsilon_r for cutoff coulombtype
+rcoulomb        = 1.0
+rvdw            = 1.0
+
+; Constraints and LINCS robustness
+constraints     = all-bonds
+constraint_algorithm = lincs
+lincs_iter      = 2
+lincs_order     = 8
+
+; Neighbor searching
+cutoff-scheme   = Verlet
+ns_type         = grid
+nstlist         = 10
+rlist           = 1.0
+
+; Output
+nstxout-compressed = 20000
+nstenergy       = 20000
+nstlog          = 20000
+
+pbc             = xyz
+gen_vel         = no

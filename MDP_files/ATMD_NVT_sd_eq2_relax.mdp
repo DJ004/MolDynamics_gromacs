@@ -1,0 +1,39 @@
+; sd NVT with weak posres or none
+; -------------------------------
+
+integrator      = sd
+define          = 
+dt              = 0.002        ; ps = 2 fs
+nsteps          = 250000       ; 500 ps = 250000 * 0.002
+
+; Temp and Pressure coupling
+tc_grps         = System
+ref_t           = 300
+tau_t           = 0.5          ; ps - lighter damping than initial
+pcoupl          = no
+
+; Electrostatics
+coulombtype     = Reaction-Field
+epsilon_rf      = 78.0         ; dielectric constant of liquid water ; use epsilon_r for cutoff coulombtype
+rcoulomb        = 1.0
+rvdw            = 1.0
+
+; Constraints and LINCS robustness
+constraints     = all-bonds
+constraint_algorithm = lincs
+lincs_iter      = 2
+lincs_order     = 8
+
+; Neighbor searching
+cutoff-scheme   = Verlet
+ns_type         = grid
+nstlist         = 10
+rlist           = 1.0
+
+; Output
+nstxout-compressed = 2000
+nstenergy       = 2000
+nstlog          = 2000
+
+pbc             = xyz
+gen_vel         = no
