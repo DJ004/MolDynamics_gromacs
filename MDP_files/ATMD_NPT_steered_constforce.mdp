@@ -31,7 +31,7 @@ tcoupl                 = V-rescale
 energygrps             = System                                  ; 1 energygrp for GPU usage
 tc-grps                = LIG Protein LIPIDS SOLVENT  
 tau_t                  = 0.1 0.1 0.1 0.1                         ; time constant, in ps
-ref_t                  = 340 340 340 340                         ; reference temperature, one for each group, in K
+ref_t                  = 313 313 313 313                         ; reference temperature, one for each group, in K
 
 ; Pressure coupling is on
 pcoupl                 = Parrinello-Rahman                       ; berendsen for EQ, Parrinello-Rahman for production
@@ -69,7 +69,7 @@ pull-coord1-geometry   = direction         ; 'direction' while using absolute re
 pull-coord1-vec        = 0.0 0.0 -1.0      ; Example: +1 in Z-dim refers to +Z axis vector.
 
 pull-coord1-start      = yes 
-pull-coord1-k          = 500               ; this is the force (kJ/mol/nm2)
+pull-coord1-k          = -12               ; this is the force (kJ/mol/nm2); negative sign required- https://manual.gromacs.org/current/user-guide/mdp-options.html#mdp-pull-coord1-k
 ;pull_coord1_rate      = 0.001             ; 0.001 nm per ps = 1 nm/ns ; not used when performing constant-force MD
 pull-group1-pbcatom    = 1                 ; atom number for pbc treatment; required in gromacs 2019+
 pull-pbc-ref-prev-step-com = yes           ; required with pull-group1-pbcatom
